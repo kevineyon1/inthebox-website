@@ -1,0 +1,96 @@
+@import "tailwindcss";
+@import "../styles/tokens.css";
+
+/* Expose token ke utility Tailwind: bg-cream, text-ink, font-serif, dst. */
+@theme inline {
+  --color-cream: var(--cream);
+  --color-paper: var(--paper);
+  --color-card: var(--card);
+  --color-mint: var(--mint);
+  --color-coral: var(--coral);
+  --color-terra: var(--terra);
+  --color-honey: var(--honey);
+  --color-sage: var(--sage);
+  --color-rose: var(--rose);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-line: var(--line);
+
+  --container-max-width: var(--container);
+  --container-narrow-max-width: var(--container-narrow);
+
+  --font-serif: var(--serif);
+  --font-sans: var(--sans);
+  --font-hand: var(--hand);
+  --font-print: var(--print);
+
+  --shadow-soft: var(--shadow-soft);
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    /* Skala dasar dinaikkan agar sepadan dengan referensi (Casper --text-base: 1.125rem). */
+    font-size: 106.25%;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--sans);
+    font-weight: 300;
+    color: var(--ink);
+    line-height: 1.65;
+    background-color: var(--cream);
+    background-image: url("/paper.png");
+    background-repeat: repeat;
+    background-attachment: fixed;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--serif);
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--ink);
+  }
+
+  a { color: inherit; text-decoration: none; }
+  button { cursor: pointer; }
+
+  :focus-visible {
+    outline: 2px solid var(--coral);
+    outline-offset: 3px;
+  }
+
+  /* Accordion FAQ memakai <details> native */
+  summary { list-style: none; }
+  summary::-webkit-details-marker { display: none; }
+}
+
+@layer utilities {
+  .no-scrollbar { scrollbar-width: none; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+}
+
+/* Strip keunggulan berjalan (marquee) — dipakai di PerksMarquee.
+   Ditulis sebagai CSS biasa (bukan lewat utility Tailwind) supaya urutan cascade
+   pasti: .animate-marquee menyalakan animasinya, lalu .group:hover menimpanya
+   ke paused — spesifisitas dua-class ini akan selalu menang dibanding satu-class. */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 32s linear infinite;
+}
+.group:hover .animate-marquee {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee { animation: none; }
+}

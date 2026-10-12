@@ -1,0 +1,36 @@
+/* ==========================================================================
+   Design tokens — sumber tunggal warna & font inthebox.
+   Ubah di sini, seluruh website ikut berubah.
+   Palet biru mengikuti warna logo in.the.box (#3F9DC5) + guideline brand.
+   ========================================================================== */
+:root {
+  /* Surface */
+  --cream: #F3FAFE;      /* latar utama halaman — biru langit sangat muda */
+  --paper: #D4EFFC;      /* latar alternatif section */
+  --card: #FFFFFF;
+  --mint: #D4F0FE;       /* latar kartu promo — biru muda kedua dari brand */
+
+  /* Accent */
+  --coral: #3F9DC5;      /* biru brand utama (diambil dari logo) — tombol/CTA primer */
+  --terra: #2C7FA6;      /* varian gelap untuk hover */
+  --honey: #F2B84B;      /* aksen hangat — kontras di atas biru (badge, ikon) */
+  --sage: #7FB9C0;       /* biru kehijauan lembut */
+  --rose: #6086C2;       /* biru sedang dari brand — aksen sekunder */
+
+  /* Text & garis */
+  --ink: #12365C;        /* navy gelap — header/footer/teks utama, ganti coklat lama */
+  --ink-soft: #52708F;
+  --line: #C9E3F2;
+
+  /* Typeface — variabel --font-* diisi oleh next/font di app/layout.tsx */
+  --serif: var(--font-averia), 'Averia Serif Libre', Georgia, serif;
+  --sans: var(--font-poppins), 'Poppins', -apple-system, sans-serif;
+  --hand: var(--font-caveat), 'Caveat', cursive;
+  --print: var(--font-patrick), 'Patrick Hand', cursive;
+
+  /* Layout — diperbesar agar sepadan dengan skala referensi Casper */
+  --container: 1696px;  /* 1600px konten + gutter 48px kiri-kanan — setara Casper --container-max-width */
+  --container-narrow: 1446px; /* 1350px konten — setara Casper --container-narrow-max-width */
+  --radius: 16px;
+  --shadow-soft: 0 10px 30px -12px rgba(18, 54, 92, 0.22);
+}
